@@ -1,1 +1,1 @@
-# Hackathon_Milestone_1_Static_Interactive_Resume_Builder
+# Hackathon_Milestone_01_Static_Interactive_Resume_Builder
