@@ -1,12 +1,19 @@
-var skillsSection = document.getElementById('skills');
-var educationSection = document.getElementById('education');
-var toggleSkillsButton = document.getElementById('toggle-skills');
-var toggleEducationButton = document.getElementById('toggle-education');
-toggleSkillsButton.addEventListener('click', function () {
-    console.log("Toggle Skills button clicked");
-    skillsSection.classList.toggle('hidden');
-});
-toggleEducationButton.addEventListener('click', function () {
-    console.log("Toggle Education button clicked");
-    educationSection.classList.toggle('hidden');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function toggleSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section)
+        return;
+    const button = section.querySelector('.toggle-btn');
+    if (!button)
+        return;
+    const isActive = section.classList.toggle('active');
+    const sectionName = sectionId.split('-')[0];
+    button.textContent = isActive ? `Hide ${sectionName}` : `Show ${sectionName}`;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
 });

@@ -1,18 +1,21 @@
-const skillsSection = document.getElementById('skills') as HTMLElement;
-const educationSection = document.getElementById('education') as HTMLElement;
+function toggleSection(sectionId: string): void {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
 
+    const button = section.querySelector('.toggle-btn') as HTMLButtonElement | null;
+    if (!button) return;
 
-const toggleSkillsButton = document.getElementById('toggle-skills') as HTMLButtonElement;
-const toggleEducationButton = document.getElementById('toggle-education') as HTMLButtonElement;
+    const isActive = section.classList.toggle('active');
 
-toggleSkillsButton.addEventListener('click', () => {
-    console.log("Toggle Skills button clicked");
-    skillsSection.classList.toggle('hidden');
-});
+    const sectionName = sectionId.split('-')[0];
+    button.textContent = isActive ? `Hide ${sectionName}` : `Show ${sectionName}`;
+}
 
-toggleEducationButton.addEventListener('click', () => {
-    console.log("Toggle Education button clicked");
-    educationSection.classList.toggle('hidden');
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll<HTMLElement>('.section');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
 });
 
 
